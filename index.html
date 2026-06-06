@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Чистовик - нормоконтроль и автоправка учебных работ</title>
+  <meta name="description" content="Чистовик помогает проверить оформление учебной работы, получить PDF-отчет и выполнить бережную автоправку документа.">
+  <style>
+    :root {
+      --green: #22c58a;
+      --mint: #e9fbf4;
+      --dark: #0e1a20;
+      --gray: #506069;
+      --line: #dde6e4;
+      --surface: #f6fbf9;
+      --white: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      color: var(--dark);
+      background: var(--white);
+      font: 16px/1.6 Arial, Helvetica, sans-serif;
+    }
+    a {
+      color: inherit;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+    }
+    .nav {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 82px;
+    }
+    .logo {
+      display: block;
+      height: 54px;
+      width: auto;
+    }
+    .nav-links {
+      align-items: center;
+      display: flex;
+      gap: 18px;
+      color: var(--gray);
+      font-size: 14px;
+    }
+    .nav-links a {
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(180deg, var(--surface) 0%, #fff 100%);
+      border-bottom: 4px solid var(--green);
+      padding: 58px 0 46px;
+    }
+    .hero-grid {
+      align-items: center;
+      display: grid;
+      gap: 38px;
+      grid-template-columns: minmax(0, 1fr) 300px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 42px;
+      line-height: 1.12;
+      margin: 0 0 18px;
+      max-width: 820px;
+    }
+    .lead {
+      color: var(--gray);
+      font-size: 19px;
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .button {
+      background: var(--green);
+      border-radius: 8px;
+      color: var(--white);
+      display: inline-block;
+      font-weight: 700;
+      padding: 13px 18px;
+      text-decoration: none;
+    }
+    .button.secondary {
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--dark);
+    }
+    .hero-mark {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 34px;
+      text-align: center;
+    }
+    .hero-mark img {
+      height: 180px;
+      width: 180px;
+    }
+    section {
+      padding: 42px 0;
+    }
+    h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin: 0 0 18px;
+    }
+    .cards {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .card h3 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+    .card p {
+      color: var(--gray);
+      margin: 0;
+    }
+    .notice {
+      background: var(--mint);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--green);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--gray);
+      padding: 26px 0;
+    }
+    @media (max-width: 760px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      .hero-mark {
+        display: none;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <img class="logo" src="assets/chistovik_logo_horizontal.svg" alt="Чистовик">
+      <nav class="nav-links" aria-label="Навигация">
+        <a href="legal.html">Соглашение и данные</a>
+        <a href="#how">Как работает</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Telegram-бот для студентов</div>
+          <h1>Чистовик - умный нормоконтроль и автоправка учебных работ</h1>
+          <p class="lead">Сервис помогает быстро найти ошибки оформления, получить понятный PDF-отчет и аккуратно исправить типовые проблемы в файле .docx.</p>
+          <div class="actions">
+            <a class="button" href="legal.html">Пользовательское соглашение</a>
+            <a class="button secondary" href="#how">Как работает Чистовик</a>
+          </div>
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <img src="assets/chistovik_mark.svg" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2>Как работает сервис</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>1. Бесплатная проверка</h3>
+            <p>Пользователь отправляет файл .docx и получает короткий итог с базовым PDF-отчетом без изменения документа.</p>
+          </article>
+          <article class="card">
+            <h3>2. Расширенный режим</h3>
+            <p>За 1 токен можно запустить расширенную проверку с бережной автоправкой одного документа.</p>
+          </article>
+          <article class="card">
+            <h3>3. ZIP-пакет</h3>
+            <p>В платном пакете формируются исходник, файл с подсветкой проблем, исправленная копия и подробный отчет.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="notice">
+          <strong>Важно:</strong> Чистовик является вспомогательным инструментом. Алгоритмы могут ошибаться, поэтому перед сдачей работы нужно самостоятельно проверить отчет и итоговый документ.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Чистовик - нормоконтроль и автоправка учебных работ.</div>
+  </footer>
+</body>
+</html>
