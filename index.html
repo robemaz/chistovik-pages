@@ -7,13 +7,15 @@
   <meta name="description" content="Чистовик помогает проверить оформление учебной работы, получить PDF-отчет и выполнить бережную автоправку документа.">
   <style>
     :root {
-      --green: #22c58a;
-      --mint: #e9fbf4;
-      --dark: #0e1a20;
+      --green: #22C58A;
+      --mint: #E6FAF1;
+      --mint-accent: #7EE2B6;
+      --dark: #0F1720;
       --gray: #506069;
       --line: #dde6e4;
-      --surface: #f6fbf9;
+      --surface: #F4F6F8;
       --white: #ffffff;
+      --font: Manrope, Inter, DejaVu Sans, Arial, sans-serif;
     }
     * {
       box-sizing: border-box;
@@ -22,7 +24,7 @@
       margin: 0;
       color: var(--dark);
       background: var(--white);
-      font: 16px/1.6 Arial, Helvetica, sans-serif;
+      font: 16px/1.6 var(--font);
     }
     a {
       color: inherit;
@@ -60,7 +62,7 @@
     }
     .hero {
       background: linear-gradient(180deg, var(--surface) 0%, #fff 100%);
-      border-bottom: 4px solid var(--green);
+      border-bottom: 4px solid var(--mint-accent);
       padding: 58px 0 46px;
     }
     .hero-grid {
