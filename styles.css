@@ -13,7 +13,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 112px; }
 body {
   position: relative;
   min-height: 100vh;
@@ -224,7 +224,7 @@ h3 { font-size: 21px; line-height: 1.2; }
   96%, 100% { transform: scale(.65); }
 }
 
-.section { max-width: 1180px; margin: 0 auto; padding: 70px 20px; }
+.section { max-width: 1180px; margin: 0 auto; padding: 70px 20px; scroll-margin-top: 112px; }
 .section__head { max-width: 720px; margin-bottom: 30px; }
 .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .step-card, .feature-list article, .legal-card, .legal-toc, .summary-box { background: rgba(255,255,255,.84); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 18px 50px rgba(15,23,32,.07); }
