@@ -19,17 +19,6 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: var(--font);
-  background: var(--chistovik-bg);
-  color: var(--chistovik-ink);
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
   background: linear-gradient(
     125deg,
     #f4f6f8 0%,
@@ -42,7 +31,17 @@ body::before {
   );
   background-size: 320% 320%;
   animation: brandGradientFlow 14s ease-in-out infinite;
-  will-change: background-position;
+  color: var(--chistovik-ink);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: transparent;
 }
 
 body::after {
@@ -63,7 +62,7 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  body::before { animation: none; }
+  body { animation: none; }
   *, *::before, *::after {
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
