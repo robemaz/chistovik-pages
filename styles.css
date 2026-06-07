@@ -19,18 +19,22 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: var(--font);
-  background: linear-gradient(
-    125deg,
-    #f4f6f8 0%,
-    #e6faf1 18%,
-    #baf1d8 36%,
-    #f4f6f8 52%,
-    #d7f8e9 68%,
-    #7ee2b6 84%,
-    #f4f6f8 100%
-  );
-  background-size: 320% 320%;
-  animation: brandGradientFlow 14s ease-in-out infinite;
+  background:
+    linear-gradient(64deg, transparent 0%, rgba(34,197,138,.18) 18%, rgba(126,226,182,.10) 28%, transparent 46%),
+    linear-gradient(116deg, transparent 8%, rgba(255,255,255,.52) 28%, rgba(126,226,182,.22) 42%, transparent 62%),
+    linear-gradient(
+      125deg,
+      #f4f6f8 0%,
+      #e6faf1 18%,
+      #baf1d8 36%,
+      #f4f6f8 52%,
+      #d7f8e9 68%,
+      #7ee2b6 84%,
+      #f4f6f8 100%
+    );
+  background-size: 240% 240%, 280% 280%, 340% 340%;
+  animation: brandGradientFlow 16s ease-in-out infinite;
+  background-attachment: fixed;
   color: var(--chistovik-ink);
   overflow-x: hidden;
 }
@@ -55,9 +59,10 @@ body::after {
 }
 
 @keyframes brandGradientFlow {
-  0% { background-position: 0% 30%; }
-  50% { background-position: 100% 70%; }
-  100% { background-position: 0% 30%; }
+  0% { background-position: -80% 15%, 120% 70%, 0% 30%; }
+  35% { background-position: 35% 45%, 35% 25%, 72% 68%; }
+  70% { background-position: 120% 75%, -50% 45%, 100% 48%; }
+  100% { background-position: -80% 15%, 120% 70%, 0% 30%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -197,6 +202,7 @@ h3 { font-size: 21px; line-height: 1.2; }
 .plan li { position: relative; padding-left: 28px; color: var(--chistovik-gray); line-height: 1.55; font-weight: 650; }
 .plan li::before { content: '✓'; position: absolute; left: 0; top: 0; color: #16895f; font-weight: 900; }
 .plan .button { margin-top: 26px; }
+.plan .button--secondary { background: rgba(255,255,255,.82); }
 .comparison-note { margin: 18px 0 0; padding: 18px 20px; border-left: 4px solid var(--chistovik-green); background: rgba(255,255,255,.72); }
 .notice { max-width: 1180px; margin: 26px auto 86px; padding: 34px; border-radius: 34px; color:#fff; display:flex; gap:24px; align-items:center; background: linear-gradient(135deg, #0F1720, #163229 65%, #22C58A); box-shadow: var(--shadow); }
 .notice img { width: 72px; height: 72px; flex: 0 0 auto; }
