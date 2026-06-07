@@ -251,16 +251,17 @@ h1 { max-width: 720px; font-size: clamp(42px, 7vw, 78px); line-height: .96; }
 .hero-title.is-typing::after {
   content: '';
   display: inline-block;
-  width: .08em;
-  height: .82em;
-  margin-left: .08em;
-  border-radius: 99px;
+  width: 1px;
+  height: .78em;
+  margin-left: .06em;
+  border-radius: 1px;
   background: currentColor;
-  vertical-align: -.05em;
-  animation: caretBlink .86s steps(1) infinite;
+  opacity: .82;
+  vertical-align: -.08em;
+  animation: caretBlink 1.05s steps(1) infinite;
 }
 @keyframes caretBlink {
-  0%, 46% { opacity: 1; }
+  0%, 46% { opacity: .82; }
   47%, 100% { opacity: 0; }
 }
 h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.05; }
