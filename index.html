@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/chistovik_mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260607-wave2" />
 </head>
 <body>
   <header class="site-header">
@@ -29,7 +29,7 @@
     <section class="hero" id="start">
       <div class="hero__content">
         <p class="eyebrow">Telegram-бот для студентов</p>
-        <h1>Умный нормоконтроль и автоправка учебных работ</h1>
+        <h1 class="hero-title" data-typewriter="Умный нормоконтроль и автоправка учебных работ">Умный нормоконтроль и автоправка учебных работ</h1>
         <p class="lead">Чистовик помогает быстро найти ошибки оформления, получить понятный PDF-отчёт и аккуратно исправить типовые проблемы в файле .docx.</p>
         <div class="hero__actions">
           <a class="button button--primary" href="https://t.me/testproverkatesbot" target="_blank" rel="noopener">Открыть бота</a>
@@ -173,5 +173,33 @@
       <a href="legal.html">Пользовательское соглашение и обработка данных</a>
     </div>
   </footer>
+  <script>
+    (() => {
+      const title = document.querySelector('[data-typewriter]');
+      if (!title || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const text = title.dataset.typewriter || title.textContent.trim();
+      title.style.minHeight = `${title.offsetHeight}px`;
+      title.textContent = '';
+      title.classList.add('is-typing');
+
+      let index = 0;
+      const typeNext = () => {
+        title.textContent = text.slice(0, index);
+        index += 1;
+
+        if (index <= text.length) {
+          const char = text[index - 2] || '';
+          const delay = /[,\s]/.test(char) ? 54 : 34;
+          window.setTimeout(typeNext, delay);
+          return;
+        }
+
+        window.setTimeout(() => title.classList.remove('is-typing'), 900);
+      };
+
+      window.setTimeout(typeNext, 320);
+    })();
+  </script>
 </body>
 </html>
