@@ -1,4 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="196" height="196" viewBox="0 0 196 196" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <defs>
+    <filter id="shadow" x="0" y="0" width="1024" height="1024">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#8fe2bf" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect x="76" y="76" width="872" height="872" rx="220" fill="#FFFFFF"/>
+  <g transform="translate(250,210) scale(2.45)" filter="url(#shadow)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="196" height="196" viewBox="0 0 196 196" fill="none">
   <defs>
     <linearGradient id="gDoc" x1="20" y1="16" x2="166" y2="176" gradientUnits="userSpaceOnUse">
       <stop stop-color="#B6EFD9"/>
@@ -19,5 +27,7 @@
     <path d="M117 22v28c0 10.493 8.507 19 19 19h28" opacity="0.38" stroke="#FFFFFF" stroke-width="2.5"/>
     <path d="M42 22C32.059 22 24 30.059 24 40V156C24 165.941 32.059 174 42 174H146C155.941 174 164 165.941 164 156V68.426c0-5.041-2.001-9.876-5.563-13.442L131.016 27.563A19 19 0 0 0 117.574 22H42Z" stroke="rgba(255,255,255,0.14)"/>
     <path d="M48 108L80 140L144 76" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
   </g>
 </svg>
