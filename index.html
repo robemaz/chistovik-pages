@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/chistovik_mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260607-caret1" />
+  <link rel="stylesheet" href="styles.css?v=20260607-type1" />
 </head>
 <body>
   <header class="site-header">
@@ -183,22 +183,60 @@
       title.textContent = '';
       title.classList.add('is-typing');
 
+      const steps = [];
+      const tokens = text.match(/\S+|\s+/g) || [];
+      tokens.forEach((token) => {
+        if (/^\s+$/.test(token)) {
+          steps.push({
+            char: ' ',
+            run: () => title.appendChild(document.createTextNode(token)),
+          });
+          return;
+        }
+
+        const word = document.createElement('span');
+        word.className = 'type-word';
+        Array.from(token).forEach((char) => {
+          steps.push({
+            char,
+            run: () => {
+              if (!word.isConnected) title.appendChild(word);
+              const letter = document.createElement('span');
+              letter.className = 'type-char';
+              letter.textContent = char;
+              word.appendChild(letter);
+              window.requestAnimationFrame(() => letter.classList.add('is-visible'));
+            },
+          });
+        });
+      });
+
       let index = 0;
       const typeNext = () => {
-        title.textContent = text.slice(0, index);
+        const step = steps[index];
+        if (!step) {
+          window.setTimeout(() => title.classList.remove('is-typing'), 1100);
+          return;
+        }
+
+        step.run();
         index += 1;
 
-        if (index <= text.length) {
-          const char = text[index - 2] || '';
-          const delay = /[,\s]/.test(char) ? 54 : 34;
+        if (index < steps.length) {
+          const char = step.char || '';
+          const nextChar = steps[index]?.char || '';
+          const baseDelay = /[,\s]/.test(char) ? 86 : 43;
+          const softPause = /[А-ЯA-Z]/.test(nextChar) ? 14 : 0;
+          const wave = Math.round(Math.sin(index * 1.45) * 7);
+          const delay = baseDelay + softPause + wave;
           window.setTimeout(typeNext, delay);
           return;
         }
 
-        window.setTimeout(() => title.classList.remove('is-typing'), 900);
+        window.setTimeout(() => title.classList.remove('is-typing'), 1100);
       };
 
-      window.setTimeout(typeNext, 320);
+      window.setTimeout(typeNext, 420);
     })();
   </script>
 </body>
