@@ -1,243 +1,170 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Чистовик - нормоконтроль и автоправка учебных работ</title>
-  <meta name="description" content="Чистовик помогает проверить оформление учебной работы, получить PDF-отчет и выполнить бережную автоправку документа.">
-  <style>
-    :root {
-      --green: #22C58A;
-      --mint: #E6FAF1;
-      --mint-accent: #7EE2B6;
-      --dark: #0F1720;
-      --gray: #506069;
-      --line: #dde6e4;
-      --surface: #F4F6F8;
-      --white: #ffffff;
-      --font: Manrope, Inter, DejaVu Sans, Arial, sans-serif;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      color: var(--dark);
-      background: var(--white);
-      font: 16px/1.6 var(--font);
-    }
-    a {
-      color: inherit;
-    }
-    .wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 22px;
-    }
-    header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.96);
-    }
-    .nav {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 82px;
-    }
-    .logo {
-      display: block;
-      height: 72px;
-      width: auto;
-    }
-    .nav-links {
-      align-items: center;
-      display: flex;
-      gap: 18px;
-      color: var(--gray);
-      font-size: 14px;
-    }
-    .nav-links a {
-      text-decoration: none;
-    }
-    .hero {
-      background: linear-gradient(180deg, var(--surface) 0%, #fff 100%);
-      border-bottom: 4px solid var(--mint-accent);
-      padding: 58px 0 46px;
-    }
-    .hero-grid {
-      align-items: center;
-      display: grid;
-      gap: 38px;
-      grid-template-columns: minmax(0, 1fr) 300px;
-    }
-    .eyebrow {
-      color: var(--green);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    h1 {
-      font-size: 42px;
-      line-height: 1.12;
-      margin: 0 0 18px;
-      max-width: 820px;
-    }
-    .lead {
-      color: var(--gray);
-      font-size: 19px;
-      margin: 0 0 24px;
-      max-width: 760px;
-    }
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .button {
-      background: var(--green);
-      border-radius: 8px;
-      color: var(--white);
-      display: inline-block;
-      font-weight: 700;
-      padding: 13px 18px;
-      text-decoration: none;
-    }
-    .button.secondary {
-      background: var(--white);
-      border: 1px solid var(--line);
-      color: var(--dark);
-    }
-    .hero-mark {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 34px;
-      text-align: center;
-    }
-    .hero-mark img {
-      height: 220px;
-      width: 220px;
-    }
-    section {
-      padding: 42px 0;
-    }
-    h2 {
-      font-size: 28px;
-      line-height: 1.2;
-      margin: 0 0 18px;
-    }
-    .cards {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 20px;
-    }
-    .card h3 {
-      font-size: 18px;
-      margin: 0 0 8px;
-    }
-    .card p {
-      color: var(--gray);
-      margin: 0;
-    }
-    .notice {
-      background: var(--mint);
-      border: 1px solid var(--line);
-      border-left: 5px solid var(--green);
-      border-radius: 8px;
-      padding: 18px 20px;
-    }
-    footer {
-      border-top: 1px solid var(--line);
-      color: var(--gray);
-      padding: 26px 0;
-    }
-    @media (max-width: 760px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 18px 0;
-      }
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 32px;
-      }
-      .hero-mark {
-        display: none;
-      }
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Чистовик — нормоконтроль и автоправка учебных работ</title>
+  <meta name="description" content="Telegram-бот для проверки оформления, PDF-отчёта и бережной автоправки учебных работ в .docx." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/chistovik_mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <img class="logo" src="assets/chistovik_logo_horizontal.svg?v=2" alt="Чистовик">
-      <nav class="nav-links" aria-label="Навигация">
-        <a href="legal.html">Соглашение и данные</a>
-        <a href="#how">Как работает</a>
-      </nav>
-    </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Чистовик — главная">
+      <img src="assets/chistovik_logo_horizontal.svg" alt="Чистовик" />
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#how">Как работает</a>
+      <a href="#features">Возможности</a>
+      <a href="legal.html">Соглашение и данные</a>
+    </nav>
+    <a class="header-cta" href="https://t.me/testproverkatesbot" target="_blank" rel="noopener">Открыть бота</a>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Telegram-бот для студентов</div>
-          <h1>Чистовик - умный нормоконтроль и автоправка учебных работ</h1>
-          <p class="lead">Сервис помогает быстро найти ошибки оформления, получить понятный PDF-отчет и аккуратно исправить типовые проблемы в файле .docx.</p>
-          <div class="actions">
-            <a class="button" href="legal.html">Пользовательское соглашение</a>
-            <a class="button secondary" href="#how">Как работает Чистовик</a>
+    <section class="hero" id="start">
+      <div class="hero__content">
+        <p class="eyebrow">Telegram-бот для студентов</p>
+        <h1>Умный нормоконтроль и автоправка учебных работ</h1>
+        <p class="lead">Чистовик помогает быстро найти ошибки оформления, получить понятный PDF-отчёт и аккуратно исправить типовые проблемы в файле .docx.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="https://t.me/testproverkatesbot" target="_blank" rel="noopener">Открыть бота</a>
+          <a class="button button--secondary" href="#how">Посмотреть сценарий</a>
+        </div>
+        <div class="trust-row" aria-label="Ключевые преимущества">
+          <span>DOCX</span>
+          <span>PDF-отчёт</span>
+          <span>Полный пакет</span>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-label="Пример интерфейса Чистовика">
+        <div class="phone-shell">
+          <div class="phone-top"></div>
+          <div class="bot-card">
+            <div class="bot-card__head">
+              <img src="assets/chistovik_mark.svg" alt="" />
+              <div>
+                <strong>Чистовик</strong>
+                <span>проверка документа</span>
+              </div>
+            </div>
+            <div class="file-chip">Курсовая_работа.docx</div>
+            <div class="progress-card">
+              <div class="progress-card__top">
+                <span>Проверка оформления</span>
+                <b>82%</b>
+              </div>
+              <div class="progress"><i style="width:82%"></i></div>
+            </div>
+            <ul class="check-list">
+              <li>Найдены проблемы в заголовках</li>
+              <li>Проверены интервалы и поля</li>
+              <li>Готовится PDF-отчёт</li>
+            </ul>
           </div>
         </div>
-        <div class="hero-mark" aria-hidden="true">
-          <img src="assets/chistovik_mark.svg?v=2" alt="">
-        </div>
       </div>
     </section>
 
-    <section id="how">
-      <div class="wrap">
+    <section class="section" id="how">
+      <div class="section__head">
+        <p class="eyebrow">Сценарий</p>
         <h2>Как работает сервис</h2>
-        <div class="cards">
-          <article class="card">
-            <h3>1. Бесплатная проверка</h3>
-            <p>Пользователь отправляет файл .docx и получает короткий итог с базовым PDF-отчетом без изменения документа.</p>
-          </article>
-          <article class="card">
-            <h3>2. Расширенный режим</h3>
-            <p>За 1 токен можно запустить расширенную проверку с бережной автоправкой одного документа.</p>
-          </article>
-          <article class="card">
-            <h3>3. ZIP-пакет</h3>
-            <p>В платном пакете формируются исходник, файл с подсветкой проблем, исправленная копия и подробный отчет.</p>
-          </article>
-        </div>
+        <p>Три понятных шага: загрузить документ, получить отчёт, при необходимости заказать аккуратную правку.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card">
+          <span class="step-card__num">01</span>
+          <h3>Бесплатная проверка</h3>
+          <p>Пользователь отправляет файл .docx и получает полезный базовый PDF-отчёт с категориями, рекомендациями и примерами проблемных мест.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-card__num">02</span>
+          <h3>Полный пакет</h3>
+          <p>За 1 токен бот выполняет бережную автоправку одного документа, повторно проверяет результат и готовит подробный отчёт.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-card__num">03</span>
+          <h3>ZIP-пакет результата</h3>
+          <p>Формируются исходник, файл с подсветкой проблем, исправленная копия и подробный отчёт.</p>
+        </article>
       </div>
     </section>
 
-    <section>
-      <div class="wrap">
-        <div class="notice">
-          <strong>Важно:</strong> Чистовик является вспомогательным инструментом. Алгоритмы могут ошибаться, поэтому перед сдачей работы нужно самостоятельно проверить отчет и итоговый документ.
-        </div>
+    <section class="section comparison" id="plans">
+      <div class="section__head">
+        <p class="eyebrow">Режимы</p>
+        <h2>Начните бесплатно, подключайте автоправку только при необходимости</h2>
+        <p>Базовый отчёт помогает самостоятельно исправить основные ошибки. Полный пакет экономит время и даёт готовую исправленную копию для финальной проверки.</p>
+      </div>
+      <div class="comparison-grid">
+        <article class="plan">
+          <div class="plan__head">
+            <span>Бесплатно</span>
+            <h3>Базовый отчёт</h3>
+          </div>
+          <ul>
+            <li>Категории и основные замечания</li>
+            <li>До 10 типов ошибок и 4 подробных примера</li>
+            <li>Пошаговые рекомендации для ручной правки</li>
+            <li>Исходный документ остаётся без изменений</li>
+          </ul>
+        </article>
+        <article class="plan plan--accent">
+          <div class="plan__head">
+            <span>1 токен за документ</span>
+            <h3>Полный пакет</h3>
+          </div>
+          <ul>
+            <li>Бережная автоправка типовых ошибок</li>
+            <li>До 20 типов замечаний и 12 подробных примеров</li>
+            <li>Подсветка и комментарии по всему Word-документу</li>
+            <li>Повторная проверка и ZIP со всеми версиями</li>
+          </ul>
+          <a class="button button--primary" href="https://t.me/testproverkatesbot" target="_blank" rel="noopener">Попробовать в Telegram</a>
+        </article>
+      </div>
+      <p class="comparison-note"><strong>Важно:</strong> автоправка сокращает объём ручной работы, но не исправляет документ полностью под чистовую. Перед сдачей обязательно проверьте результат и оставшиеся замечания.</p>
+    </section>
+
+    <section class="section split" id="features">
+      <div>
+        <p class="eyebrow">Польза</p>
+        <h2>Не переписывает работу за студента, а помогает довести оформление до порядка</h2>
+        <p class="section-text">Чистовик нужен как быстрый помощник перед сдачей: подсветить ошибки, объяснить замечания и снизить риск технических недочётов в документе.</p>
+      </div>
+      <div class="feature-list">
+        <article>
+          <h3>Понятный отчёт</h3>
+          <p>Замечания собраны в PDF, чтобы их было удобно проверить перед сдачей.</p>
+        </article>
+        <article>
+          <h3>Аккуратные исправления</h3>
+          <p>Автоправка ориентирована на типовые проблемы оформления и не заменяет самостоятельную проверку.</p>
+        </article>
+        <article>
+          <h3>Прозрачные ограничения</h3>
+          <p>Сервис прямо предупреждает: алгоритмы могут ошибаться, итоговое решение остаётся за пользователем.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="notice">
+      <img src="assets/chistovik_mark_mono_white.svg" alt="" />
+      <div>
+        <h2>Важно перед сдачей</h2>
+        <p>Чистовик является вспомогательным инструментом. Автоправка не заменяет финальную ручную проверку: перед отправкой преподавателю нужно самостоятельно проверить отчёт и итоговый документ.</p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">Чистовик - нормоконтроль и автоправка учебных работ.</div>
+  <footer class="footer">
+    <span>© 2026 Чистовик</span>
+    <a href="legal.html">Пользовательское соглашение и обработка данных</a>
   </footer>
 </body>
 </html>
