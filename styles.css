@@ -122,7 +122,7 @@ img { max-width: 100%; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
   margin: 0 0 18px;
   color: #16895f;
   font-size: 14px;
@@ -130,7 +130,26 @@ img { max-width: 100%; }
   letter-spacing: .04em;
   text-transform: uppercase;
 }
-.eyebrow::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--chistovik-green); box-shadow: 0 0 0 8px rgba(34,197,138,.14); }
+.eyebrow::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  border-radius: 50%;
+  background: var(--chistovik-green);
+  box-shadow: 0 0 0 8px rgba(34,197,138,.14);
+  animation: eyebrowPulse 1.9s ease-in-out infinite;
+}
+@keyframes eyebrowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 8px rgba(34,197,138,.14), 0 0 0 0 rgba(34,197,138,.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(34,197,138,.18), 0 0 0 13px rgba(34,197,138,0);
+    transform: scale(1.08);
+  }
+}
 h1, h2, h3 { margin: 0; letter-spacing: -0.04em; }
 h1 { max-width: 720px; font-size: clamp(42px, 7vw, 78px); line-height: .96; }
 h2 { font-size: clamp(30px, 4vw, 48px); line-height: 1.05; }
@@ -195,8 +214,9 @@ h3 { font-size: 21px; line-height: 1.2; }
 .legal-toc { position: sticky; top: 112px; display:grid; gap: 10px; padding: 18px; border-radius: 24px; }
 .legal-toc strong { margin-bottom: 6px; }
 .legal-toc a { color: var(--chistovik-gray); font-weight: 750; font-size: 14px; }
-.legal-card { padding: 34px; border-radius: 30px; }
+.legal-card { padding: 34px; border-radius: 30px; counter-reset: legal-section; }
 .legal-card section { padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--line); }
+.legal-card section[data-section] { counter-increment: legal-section; }
 .legal-card h2 { font-size: 28px; margin-bottom: 14px; }
 .legal-card li { margin: 10px 0; color: var(--chistovik-gray); line-height: 1.75; }
 .summary-box { padding: 18px 20px; border-radius: 20px; background: var(--chistovik-mint-bg); color: #244237; line-height: 1.65; }
@@ -250,22 +270,28 @@ h3 { font-size: 21px; line-height: 1.2; }
 
 .legal-card section[data-section] li {
   position: relative;
-  padding-left: 58px;
+  padding-left: 76px;
 }
 
 .legal-card section[data-section] li::before {
   counter-increment: legal-subitem;
-  content: attr(data-section) "." counter(legal-subitem);
+  content: counter(legal-section) "." counter(legal-subitem) ".";
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 42px;
+  width: 56px;
+  text-align: right;
   color: #16895f;
   font-weight: 900;
+  white-space: nowrap;
 }
 
 @media (max-width: 560px) {
   .legal-card section[data-section] li {
-    padding-left: 52px;
+    padding-left: 68px;
+  }
+
+  .legal-card section[data-section] li::before {
+    width: 50px;
   }
 }
