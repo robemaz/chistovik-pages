@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/chistovik_mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260607-wave1" />
+  <link rel="stylesheet" href="styles.css?v=20260607-mobile-type1" />
 </head>
 <body>
   <header class="site-header">
@@ -212,10 +212,11 @@
       });
 
       let index = 0;
+      const isDesktop = window.matchMedia('(min-width: 861px)').matches;
       const typeNext = () => {
         const step = steps[index];
         if (!step) {
-          window.setTimeout(() => title.classList.remove('is-typing'), 1100);
+          window.setTimeout(() => title.classList.remove('is-typing'), isDesktop ? 1350 : 1100);
           return;
         }
 
@@ -225,18 +226,18 @@
         if (index < steps.length) {
           const char = step.char || '';
           const nextChar = steps[index]?.char || '';
-          const baseDelay = /[,\s]/.test(char) ? 86 : 43;
-          const softPause = /[А-ЯA-Z]/.test(nextChar) ? 14 : 0;
-          const wave = Math.round(Math.sin(index * 1.45) * 7);
+          const baseDelay = /[,\s]/.test(char) ? (isDesktop ? 116 : 86) : (isDesktop ? 62 : 43);
+          const softPause = nextChar && nextChar.toUpperCase() === nextChar && nextChar.toLowerCase() !== nextChar ? (isDesktop ? 22 : 14) : 0;
+          const wave = Math.round(Math.sin(index * 1.45) * (isDesktop ? 10 : 7));
           const delay = baseDelay + softPause + wave;
           window.setTimeout(typeNext, delay);
           return;
         }
 
-        window.setTimeout(() => title.classList.remove('is-typing'), 1100);
+        window.setTimeout(() => title.classList.remove('is-typing'), isDesktop ? 1350 : 1100);
       };
 
-      window.setTimeout(typeNext, 420);
+      window.setTimeout(typeNext, isDesktop ? 560 : 420);
     })();
   </script>
 </body>
