@@ -382,14 +382,17 @@ h3 { font-size: 21px; line-height: 1.2; }
 .feature-list article { padding: 24px; border-radius: 24px; }
 .feature-list p { margin-bottom: 0; }
 .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-.plan { padding: 30px; border-radius: var(--radius); background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 18px 50px rgba(15,23,32,.07); }
+.plan { display: flex; flex-direction: column; padding: 30px; border-radius: var(--radius); background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 18px 50px rgba(15,23,32,.07); }
 .plan--accent { position: relative; overflow: hidden; isolation: isolate; border: 2px solid var(--chistovik-green); background: rgba(230,250,241,.9); }
 .plan__head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .plan__head span { color: #16895f; font-size: 13px; font-weight: 800; text-transform: uppercase; }
-.plan ul { display: grid; gap: 13px; margin: 24px 0 0; padding: 0; list-style: none; }
+.plan ul { display: grid; flex: 1; align-content: start; gap: 13px; margin: 24px 0 0; padding: 0; list-style: none; }
 .plan li { position: relative; padding-left: 28px; color: var(--chistovik-gray); line-height: 1.55; font-weight: 650; }
-.plan li::before { content: '✓'; position: absolute; left: 0; top: 0; color: #16895f; font-weight: 900; }
-.plan .button { margin-top: 26px; }
+.plan__feature::before { position: absolute; left: 0; top: .02em; width: 18px; text-align: center; font-weight: 950; }
+.plan__feature--yes::before { content: '✓'; color: #16895f; }
+.plan li.plan__feature--no { color: #7b8a91; }
+.plan__feature--no::before { content: '×'; color: #d05d5d; font-size: 20px; line-height: 1; }
+.plan .button { align-self: flex-start; margin-top: 26px; }
 .comparison-note { margin: 18px 0 0; padding: 18px 20px; border-left: 4px solid var(--chistovik-green); background: rgba(255,255,255,.72); }
 .notice { position: relative; max-width: 1180px; margin: 26px auto 86px; padding: 34px; border-radius: 34px; color:#fff; display:flex; gap:24px; align-items:center; overflow: hidden; background: linear-gradient(120deg, #0F1720 0%, #163229 34%, #16895f 64%, #22C58A 100%); background-size: 240% 240%; box-shadow: var(--shadow); animation: noticeWaveBase 12s ease-in-out infinite; }
 .notice::before {
