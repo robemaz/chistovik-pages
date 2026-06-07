@@ -185,43 +185,43 @@ h3 { font-size: 21px; line-height: 1.2; }
 .check-list li:nth-child(2)::before { animation-delay: .28s; }
 .check-list li:nth-child(3)::before { animation-delay: .56s; }
 @keyframes phoneStepIn {
-  0%, 34% { opacity: 1; transform: translateY(0); }
+  0%, 100% { opacity: 1; transform: translateY(0); }
   44%, 88% { opacity: .38; transform: translateY(-4px); }
-  96%, 100% { opacity: 0; transform: translateY(-8px); }
 }
 @keyframes fileSend {
-  0%, 14% { opacity: .35; transform: translateX(18px); }
+  0%, 14%, 100% { opacity: .35; transform: translateX(18px); }
   22%, 88% { opacity: 1; transform: translateX(0); }
-  96%, 100% { opacity: 0; transform: translateX(-12px); }
+  96% { opacity: .35; transform: translateX(18px); }
 }
 @keyframes progressCardIn {
-  0%, 30% { opacity: .35; transform: translateY(12px); }
+  0%, 30%, 100% { opacity: .35; transform: translateY(12px); }
   38%, 88% { opacity: 1; transform: translateY(0); }
-  96%, 100% { opacity: 0; transform: translateY(-8px); }
+  96% { opacity: .35; transform: translateY(12px); }
 }
 @keyframes progressRun {
   0%, 38% { width: 0%; }
   52% { width: 38%; }
   67% { width: 82%; }
-  76%, 88% { width: 100%; }
-  96%, 100% { width: 0%; }
+  76%, 94% { width: 100%; }
+  100% { width: 0%; }
 }
 @keyframes progressPercent {
   0%, 38% { content: "0%"; }
   48% { content: "27%"; }
   58% { content: "54%"; }
   68% { content: "82%"; }
-  76%, 100% { content: "100%"; }
+  76%, 94% { content: "100%"; }
+  100% { content: "0%"; }
 }
 @keyframes checkSlide {
-  0%, 64% { opacity: .28; transform: translateX(14px); }
+  0%, 64%, 100% { opacity: .28; transform: translateX(14px); }
   72%, 88% { opacity: 1; transform: translateX(0); }
-  96%, 100% { opacity: 0; transform: translateX(-8px); }
+  96% { opacity: .28; transform: translateX(14px); }
 }
 @keyframes checkPop {
-  0%, 64% { transform: scale(.65); }
+  0%, 64%, 100% { transform: scale(.65); }
   72%, 88% { transform: scale(1); }
-  96%, 100% { transform: scale(.65); }
+  96% { transform: scale(.65); }
 }
 
 .section { max-width: 1180px; margin: 0 auto; padding: 70px 20px; scroll-margin-top: 112px; }
